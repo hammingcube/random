@@ -1,10 +1,10 @@
 package random
 
 import (
-	"math/rand"
+	//"math/rand"
+	"fmt"
 )
 
-func Discrete(weights []int) (index int) {
-	index = rand.Intn(len(weights))
-	return
+func NewWeighted() {
+	fmt.Println("Hi from the random package!")
 }
