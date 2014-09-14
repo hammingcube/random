@@ -1,9 +1,9 @@
 package random
 
 import (
-	"testing"
 	"fmt"
 	"math/rand"
+	"testing"
 	"time"
 )
 
@@ -11,7 +11,7 @@ func Test(t *testing.T) {
 
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 
-	a := []int {10, 10, 20}
+	a := []int{10, 10, 20}
 	gen := Weighted(r, a)
 	hist := make(map[int]int)
 	trials := 10000
