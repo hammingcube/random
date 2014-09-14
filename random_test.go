@@ -5,5 +5,7 @@ import (
 )
 
 func Test(t *testing.T) {
-	NewWeighted()
+	a := make([]int, 5)
+	rndInd := Weighted(a)
+	rndInd()
 }
