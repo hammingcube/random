@@ -1,29 +1,26 @@
 package random
 
 import (
+	"sort"
 	"math/rand"
-	"fmt"
+	//"fmt"
 )
 
-var constantFunc func() int = func() int {
-			return 1
-		}
 
-func Weighted(w []int) func() int {
-	if len(w) < 1 {
-		return constantFunc
-	}
-	
-	acc := make([]int, len(w))
+
+func Weighted(r *rand.Rand, w []int) func() int {
+	n := len(w)	
+	acc := make([]int, n)
 	sum := 0
 	for i, val := range(w) {
 		sum += val
 		acc[i] = sum
 	}
-	fmt.Println(acc)
-
-	i := rand.Intn(len(w))
-	return func() int {
-		return i
+	gen := func() int {
+		randVal := 1 + r.Intn(sum)
+		return sort.Search(n, 
+					func(i int) bool { 
+						return acc[i] >= randVal });
 	}
+	return gen
 }
